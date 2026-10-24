@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Website Redesign Proposal</title>
+<title>Website Redesign Discussion Proposal</title>
 <style>
 :root{
   --ink:#1d2330; --muted:#5b6474; --line:#e3e1dc; --bg:#fbfaf7; --card:#ffffff;
@@ -100,10 +100,11 @@ a{color:var(--brand)}
 
 <header class="cover">
   <div class="wrap">
-    <div class="eyebrow">Website audit &amp; redesign proposal · For management review</div>
-    <h1>Eva Stalin IAS Academy<br>Website Redesign Proposal</h1>
-    <p>An evidence-based review of evastaliniasacademy.in, with a recommended direction, sitemap and scope for discussion and approval.</p>
-    <div class="meta"><span>Website: https://www.evastaliniasacademy.in/</span><span>Audit date: 24 October 2026</span><span>Status: Draft for client discussion</span></div>
+    <div class="eyebrow">Preliminary website review · Redesign discussion proposal</div>
+    <h1>Eva Stalin IAS Academy<br>Website Redesign Discussion Proposal</h1>
+    <p>A first-meeting discussion document based on a preliminary review of the public-facing website. Design direction, sitemap and scope are proposals for discussion—not a completed technical audit.</p>
+    <div class="meta"><span>Website: https://www.evastaliniasacademy.in/</span><span>Audit date: 24 October 2026</span><span>Status: Preliminary discussion draft</span></div>
+    <p style="margin-top:18px;padding:12px 14px;border:1px solid rgba(255,255,255,.45);border-radius:8px;font-size:14px"><strong>Meeting note:</strong> This is a preliminary review of the public website only. The academy's source code and internal systems have not been provided or inspected.</p>
   </div>
 </header>
 
@@ -112,9 +113,9 @@ a{color:var(--brand)}
 <nav class="toc" aria-label="Contents">
   <strong>Contents</strong>
   <ol>
-    <li><a href="#s1">Executive summary</a></li>
-    <li><a href="#s2">Existing website overview</a></li>
-    <li><a href="#s3">Key audit findings</a></li>
+    <li><a href="#s1">Initial observations & discussion goals</a></li>
+    <li><a href="#s2">Current public-facing website overview</a></li>
+    <li><a href="#s3">Initial observations & improvement opportunities</a></li>
     <li><a href="#s4">Alignment &amp; responsive design issues</a></li>
     <li><a href="#s5">UX &amp; conversion opportunities</a></li>
     <li><a href="#s6">Competitor &amp; design references</a></li>
@@ -129,23 +130,23 @@ a{color:var(--brand)}
 
 <!-- 1 -->
 <section id="s1">
-<h2><span class="n">1</span>Executive summary</h2>
-<p class="lead">The academy's website already has the raw ingredients of a strong admissions site: a clear Chennai (West Tambaram) location, UPSC and TNPSC programmes, integrated degree programmes, test series, a large bilingual current-affairs library, student video reviews, and working phone and WhatsApp contact options.</p>
-<p>The problem is how these are presented. A visitor arriving on the homepage first sees an admission popup, a two-line menu with 12 items, and banner images whose messages are baked into the picture. Programme information is spread across pages whose menu labels do not match their content. There are no dedicated pages for courses, faculty or results. Five or more different enquiry forms collect different details. On a phone, the first screen is taken up almost entirely by contact text and test-series buttons before the logo appears.</p>
+<h2><span class="n">1</span>Initial observations & discussion goals</h2>
+<p class="lead">From a preliminary review of the public-facing website, the academy appears to have several useful admissions assets: a clear Chennai (West Tambaram) location, UPSC and TNPSC programmes, integrated degree programmes, test series, a large bilingual current-affairs library, student video reviews, and working phone and WhatsApp contact options.</p>
+<p>An initial design opportunity is to make these assets easier to discover and act on. The observations below should be discussed with the academy and confirmed before they are treated as final requirements. A visitor arriving on the homepage first sees an admission popup, a two-line menu with 12 items, and banner images whose messages are baked into the picture. Programme information is spread across pages whose menu labels do not match their content. There are no dedicated pages for courses, faculty or results. Five or more different enquiry forms collect different details. On a phone, the first screen is taken up almost entirely by contact text and test-series buttons before the logo appears.</p>
 <div class="kpis">
   <div class="kpi"><b>≈5.4 MB</b><span>Images downloaded by the homepage (measured); 4 hero banners alone ≈3.0 MB</span></div>
   <div class="kpi"><b>12</b><span>Top-level menu items, wrapping onto two lines on a 1440px desktop</span></div>
   <div class="kpi"><b>5+</b><span>Separate enquiry / application forms with inconsistent fields</span></div>
   <div class="kpi"><b>0</b><span>Dedicated pages for courses, faculty or results (requests to these URLs show the homepage)</span></div>
 </div>
-<div class="callout"><strong>Recommendation.</strong> Redesign the site around one goal: help a UPSC or TNPSC aspirant find the right programme and make an enquiry in as few steps as possible. In practice: a simpler menu organised by exam, a clear text-based hero, dedicated programme pages, one consistent enquiry form, a lighter and faster mobile experience, and verified results and faculty content supplied by the academy. The existing current-affairs library, contact channels, and tracking tags should be kept.</div>
-<p class="muted">This document is a proposal for discussion. No changes have been made to the live website, and no forms were submitted.</p>
+<div class="callout"><strong>Proposed direction.</strong> Explore a redesign around one goal: help a UPSC or TNPSC aspirant find the right programme and make an enquiry in as few steps as possible. In practice: a simpler menu organised by exam, a clear text-based hero, dedicated programme pages, one consistent enquiry form, a lighter and faster mobile experience, and verified results and faculty content supplied by the academy. The existing current-affairs library, contact channels, and tracking tags should be kept.</div>
+<p class="muted">This is a preliminary review of the publicly accessible website to support the first meeting. No source code, hosting, CMS, analytics or Tag Manager access has been provided. No changes have been made to the live website, and no forms were submitted. Findings and recommendations will be validated with the academy before the scope is finalised.</p>
 </section>
 
 <!-- 2 -->
 <section id="s2">
-<h2><span class="n">2</span>Existing website overview</h2>
-<p>The site is a custom PHP website built on Bootstrap and jQuery, with a WOW Slider hero carousel. The sitemap file lists 483 URLs, most of them current-affairs and blog articles.</p>
+<h2><span class="n">2</span>Current public-facing website overview</h2>
+<p>The public-facing website shows signs of using Bootstrap and jQuery, and a slider-style hero. The public sitemap appears to contain a large collection of URLs, including current-affairs and blog content. The underlying backend, CMS, source-code structure and hosting setup have not been verified; these must be confirmed with the academy or its current developer.</p>
 <h3>Current structure (from the live menu)</h3>
 <div class="table-wrap"><table>
 <thead><tr><th style="width:22%">Menu item</th><th>Sub-items and where they actually lead</th></tr></thead>
@@ -177,8 +178,8 @@ a{color:var(--brand)}
 
 <!-- 3 -->
 <section id="s3">
-<h2><span class="n">3</span>Key audit findings</h2>
-<p>Findings are ranked by impact on enquiries and trust. Each finding is labelled:
+<h2><span class="n">3</span>Initial observations & improvement opportunities</h2>
+<p>The following are preliminary observations from the public-facing website, grouped by potential impact on enquiries and trust. They are not a source-code or backend audit. Items should be confirmed with the academy before being treated as final requirements. Each finding is labelled:
 <span class="tag c">Confirmed</span> observed or measured during this audit ·
 <span class="tag o">Opportunity</span> a design judgement for discussion ·
 <span class="tag u">Not verified</span> could not be fully tested.</p>
@@ -206,7 +207,7 @@ a{color:var(--brand)}
 <!-- 4 -->
 <section id="s4">
 <h2><span class="n">4</span>Alignment &amp; responsive design issues</h2>
-<p>Screenshots were captured in a browser at a 1440 × 900 desktop viewport and a 375 × 812 mobile viewport (emulated). Numbered markers point to the issues described below each image.</p>
+<p>The public-facing website was reviewed at a 1440 × 900 desktop viewport and a 375 × 812 emulated mobile viewport. These observations are directional only; they have not been validated on real devices or with the site source code. Numbered markers point to the areas for discussion below.</p>
 
 <figure>
   <div class="shot">
@@ -455,10 +456,10 @@ a{color:var(--brand)}
 <!-- 9 -->
 <section id="s9">
 <h2><span class="n">9</span>Proposed scope of work</h2>
-<p>This is a preliminary scope. Timelines and pricing are outside this document and will be shared separately once the scope is agreed.</p>
+<p>This is a discussion draft, not a final statement of work. Final scope, timelines and pricing will be proposed after the first meeting and after the current technology, integrations, content needs and access requirements are understood.</p>
 <div class="grid2">
 <div>
-<h3>A. Confirmed needs (from this audit)</h3>
+<h3>A. Potential redesign priorities to discuss</h3>
 <ul class="tight">
 <li>UI/UX redesign of the homepage and all key templates.</li>
 <li>Responsive layouts for desktop, tablet and mobile.</li>
@@ -477,7 +478,7 @@ a{color:var(--brand)}
 <li>A Free Resources hub with filters.</li>
 <li>Splitting the student application into steps.</li>
 <li>Updated colour palette and font family.</li>
-<li>Whether to rebuild on the current PHP codebase or move to a CMS (decision for the implementation phase).</li>
+<li>Whether to retain the existing platform or consider another approach. This cannot be decided until the current stack and codebase are reviewed.</li>
 <li>Copywriting and new photography support.</li>
 </ul>
 </div>
@@ -507,11 +508,11 @@ a{color:var(--brand)}
 <h2><span class="n">11</span>Assumptions, dependencies &amp; client questions</h2>
 <h3>Audit limitations</h3>
 <ul class="tight">
-<li>Audited in one browser on 24 Oct 2026 using a 1440px desktop viewport and a 375px emulated phone. <strong>Not tested:</strong> real phones, tablets, iOS Safari or other browsers.</li>
+<li>Preliminary review conducted on 24 Oct 2026 using a 1440px desktop viewport and a 375px emulated phone. <strong>Not tested:</strong> real phones, tablets, iOS Safari or other browsers.</li>
 <li><strong>No forms were submitted</strong>, so email delivery, auto-replies and conversion tracking were not verified.</li>
 <li>Google PageSpeed/Lighthouse scores could not be retrieved (API quota). Performance findings come from measured file sizes and request counts, not lab scores.</li>
 <li>Pages were reviewed through the menu, footer and direct URL checks. Not all 483 sitemap URLs were reviewed individually.</li>
-<li>No access to hosting, the CMS/codebase, Google Analytics, Search Console or Tag Manager.</li>
+<li>No access has been provided to hosting, the CMS/source code, Google Analytics, Search Console or Tag Manager. Therefore, backend architecture, form delivery, integrations, tracking and implementation complexity remain unverified.</li>
 <li>Claims shown on the site (achievement counts, rankings) were not independently verified and are not repeated as fact in this proposal.</li>
 </ul>
 <h3>Dependencies</h3>
@@ -547,12 +548,12 @@ a{color:var(--brand)}
 <li><strong>Visual design approval:</strong> design system and key pages at desktop, tablet and mobile, with one consolidated round of feedback per stage.</li>
 <li><strong>Implementation proposal:</strong> a separate document covering build approach, timeline and commercials.</li>
 </ol>
-<div class="callout">Every recommendation above is for discussion. Nothing will be changed on the live website until the academy approves the scope and designs in writing.</div>
+<div class="callout">Every recommendation is for discussion only. This document does not assume access to the source code or authorisation to make changes. No live-site changes or development work will begin without an agreed scope and written approval.</div>
 </section>
 
 </main>
 <footer>
-  <div class="wrap">Prepared for Eva Stalin IAS Academy management · Audit date 24 October 2026 · Evidence screenshots captured from the public website on that date.</div>
+  <div class="wrap">Prepared for Eva Stalin IAS Academy · Preliminary public-website review dated 24 October 2026 · For first-meeting discussion only.</div>
 </footer>
 </body>
 </html>
