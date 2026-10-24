@@ -1,0 +1,560 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website Redesign Proposal</title>
+<style>
+:root{
+  --ink:#1d2330; --muted:#5b6474; --line:#e3e1dc; --bg:#fbfaf7; --card:#ffffff;
+  --brand:#7a1420; --brand-soft:#f6e9ea; --gold:#c8961e; --gold-soft:#fbf3df;
+  --high:#b42318; --high-bg:#fdecea; --med:#b54708; --med-bg:#fef4e6; --low:#3e5c76; --low-bg:#eaf1f7;
+  --ok:#1f7a4d; --ok-bg:#e8f5ee;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#ece9e3; --muted:#a9afba; --line:#343844; --bg:#16181d; --card:#1f2229;
+    --brand:#e58a94; --brand-soft:#3a2226; --gold:#e3b54c; --gold-soft:#3a3120;
+    --high:#ff8a80; --high-bg:#3d2422; --med:#f5b56a; --med-bg:#3b2e1d; --low:#9cc3e6; --low-bg:#1f2c38;
+    --ok:#7fd3a8; --ok-bg:#1b3328;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#ece9e3; --muted:#a9afba; --line:#343844; --bg:#16181d; --card:#1f2229;
+  --brand:#e58a94; --brand-soft:#3a2226; --gold:#e3b54c; --gold-soft:#3a3120;
+  --high:#ff8a80; --high-bg:#3d2422; --med:#f5b56a; --med-bg:#3b2e1d; --low:#9cc3e6; --low-bg:#1f2c38;
+  --ok:#7fd3a8; --ok-bg:#1b3328;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header.cover{background:var(--brand);color:#fff;padding:56px 0 44px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) header.cover{background:#3a1419}}
+:root[data-theme="dark"] header.cover{background:#3a1419}
+header.cover .eyebrow{letter-spacing:.12em;text-transform:uppercase;font-size:12px;opacity:.85}
+header.cover h1{font-family:Georgia,"Noto Serif",serif;font-size:clamp(28px,5vw,42px);line-height:1.15;margin:10px 0 12px;font-weight:600}
+header.cover p{margin:0;opacity:.9;max-width:640px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px;font-size:14px;opacity:.9}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:28px 0}
+nav.toc ol{margin:6px 0 0;padding-left:20px;columns:2;column-gap:32px;font-size:15px}
+@media (max-width:640px){nav.toc ol{columns:1}}
+nav.toc a{color:var(--ink);text-decoration:none}
+nav.toc a:hover{color:var(--brand);text-decoration:underline}
+section{margin:44px 0}
+h2{font-family:Georgia,"Noto Serif",serif;font-weight:600;font-size:26px;line-height:1.25;margin:0 0 14px;padding-top:8px;border-top:3px solid var(--brand);display:inline-block}
+h2 .n{color:var(--gold);margin-right:8px}
+h3{font-size:18px;margin:26px 0 8px}
+p{margin:0 0 12px}
+.lead{font-size:17px}
+.muted{color:var(--muted)}
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 18px;border-radius:6px;margin:16px 0}
+.note{background:var(--low-bg);border-left:4px solid var(--low);padding:12px 16px;border-radius:6px;margin:14px 0;font-size:15px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:18px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi b{display:block;font-size:24px;font-family:Georgia,serif;color:var(--brand)}
+.kpi span{font-size:13px;color:var(--muted)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card);margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:680px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{background:var(--brand-soft);font-weight:600;font-size:13px}
+tr:last-child td{border-bottom:none}
+.sev{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.sev.h{background:var(--high-bg);color:var(--high)}
+.sev.m{background:var(--med-bg);color:var(--med)}
+.sev.l{background:var(--low-bg);color:var(--low)}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:4px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.tag.c{border-color:var(--ok);color:var(--ok)}
+.tag.o{border-color:var(--gold);color:var(--gold)}
+.tag.u{border-color:var(--low);color:var(--low)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:720px){.grid2{grid-template-columns:1fr}}
+figure{margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px}
+.shot{position:relative;line-height:0}
+.shot img{width:100%;height:auto;border-radius:6px;display:block}
+.pin{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:var(--high);color:#fff;font:700 13px/26px system-ui,sans-serif;text-align:center;box-shadow:0 0 0 3px rgba(255,255,255,.9),0 2px 6px rgba(0,0,0,.35)}
+figcaption{font-size:13.5px;line-height:1.5;color:var(--muted);padding:10px 4px 2px}
+figcaption ol{margin:6px 0 0;padding-left:20px}
+.mobile-fig{max-width:360px}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;align-items:start}
+ul.tight li,ol.tight li{margin:3px 0}
+.swatches{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.sw{width:150px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card);font-size:12.5px}
+.sw div{height:52px}
+.sw p{margin:0;padding:6px 8px;line-height:1.35}
+.seq{counter-reset:s;list-style:none;padding:0;margin:10px 0}
+.seq li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;border:1px solid var(--line);border-radius:8px;background:var(--card);margin:8px 0}
+.seq li::before{content:counter(s);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font:600 12px/24px system-ui;text-align:center}
+.sitemap{font-size:14.5px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.sitemap ul{margin:4px 0;padding-left:20px}
+.sitemap > ul{padding-left:0;list-style:none}
+.new{color:var(--ok);font-weight:600;font-size:12px}
+.pend{color:var(--med);font-weight:600;font-size:12px}
+footer{border-top:1px solid var(--line);padding:22px 0 50px;color:var(--muted);font-size:13px;margin-top:50px}
+a{color:var(--brand)}
+@media print{body{background:#fff}header.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}section{break-inside:avoid-page}}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="eyebrow">Website audit &amp; redesign proposal · For management review</div>
+    <h1>Eva Stalin IAS Academy<br>Website Redesign Proposal</h1>
+    <p>An evidence-based review of evastaliniasacademy.in, with a recommended direction, sitemap and scope for discussion and approval.</p>
+    <div class="meta"><span>Website: https://www.evastaliniasacademy.in/</span><span>Audit date: 24 October 2026</span><span>Status: Draft for client discussion</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<nav class="toc" aria-label="Contents">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#s1">Executive summary</a></li>
+    <li><a href="#s2">Existing website overview</a></li>
+    <li><a href="#s3">Key audit findings</a></li>
+    <li><a href="#s4">Alignment &amp; responsive design issues</a></li>
+    <li><a href="#s5">UX &amp; conversion opportunities</a></li>
+    <li><a href="#s6">Competitor &amp; design references</a></li>
+    <li><a href="#s7">Proposed redesign vision</a></li>
+    <li><a href="#s8">Recommended sitemap &amp; page structure</a></li>
+    <li><a href="#s9">Proposed scope of work</a></li>
+    <li><a href="#s10">Deliverables &amp; acceptance criteria</a></li>
+    <li><a href="#s11">Assumptions, dependencies &amp; questions</a></li>
+    <li><a href="#s12">Next steps &amp; approval process</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="s1">
+<h2><span class="n">1</span>Executive summary</h2>
+<p class="lead">The academy's website already has the raw ingredients of a strong admissions site: a clear Chennai (West Tambaram) location, UPSC and TNPSC programmes, integrated degree programmes, test series, a large bilingual current-affairs library, student video reviews, and working phone and WhatsApp contact options.</p>
+<p>The problem is how these are presented. A visitor arriving on the homepage first sees an admission popup, a two-line menu with 12 items, and banner images whose messages are baked into the picture. Programme information is spread across pages whose menu labels do not match their content. There are no dedicated pages for courses, faculty or results. Five or more different enquiry forms collect different details. On a phone, the first screen is taken up almost entirely by contact text and test-series buttons before the logo appears.</p>
+<div class="kpis">
+  <div class="kpi"><b>≈5.4 MB</b><span>Images downloaded by the homepage (measured); 4 hero banners alone ≈3.0 MB</span></div>
+  <div class="kpi"><b>12</b><span>Top-level menu items, wrapping onto two lines on a 1440px desktop</span></div>
+  <div class="kpi"><b>5+</b><span>Separate enquiry / application forms with inconsistent fields</span></div>
+  <div class="kpi"><b>0</b><span>Dedicated pages for courses, faculty or results (requests to these URLs show the homepage)</span></div>
+</div>
+<div class="callout"><strong>Recommendation.</strong> Redesign the site around one goal: help a UPSC or TNPSC aspirant find the right programme and make an enquiry in as few steps as possible. In practice: a simpler menu organised by exam, a clear text-based hero, dedicated programme pages, one consistent enquiry form, a lighter and faster mobile experience, and verified results and faculty content supplied by the academy. The existing current-affairs library, contact channels, and tracking tags should be kept.</div>
+<p class="muted">This document is a proposal for discussion. No changes have been made to the live website, and no forms were submitted.</p>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+<h2><span class="n">2</span>Existing website overview</h2>
+<p>The site is a custom PHP website built on Bootstrap and jQuery, with a WOW Slider hero carousel. The sitemap file lists 483 URLs, most of them current-affairs and blog articles.</p>
+<h3>Current structure (from the live menu)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th style="width:22%">Menu item</th><th>Sub-items and where they actually lead</th></tr></thead>
+<tbody>
+<tr><td>Home</td><td>Homepage</td></tr>
+<tr><td>IAS</td><td>"IAS Academy" → page titled <em>Historical Perspective</em>; "Mock Interviews" → <em>Event List</em>; "How to crack IAS Prelims" → <em>Event Detail</em>; "How to crack IAS Mains" → Mains guide</td></tr>
+<tr><td>UPSC</td><td>6 sub-items (About, Eligibility, Age Limit, Jobs, Prelims Syllabus, Mains Syllabus), all linking to the same page (upsc.php)</td></tr>
+<tr><td>TNPSC</td><td>6 sub-items, all linking to tnpsc.php; plus TNPSC Coaching, Tamil current affairs and three "How to crack Group I / II / IV" guides</td></tr>
+<tr><td>Help Topics</td><td>Newspaper preparation, Map preparation, UPSC interview tips</td></tr>
+<tr><td>Current Affairs</td><td>UPSC daily / monthly; TNPSC Tamil / English / monthly ("TNPSC Daily Current Affairs" has no link)</td></tr>
+<tr><td>Blogs</td><td>Blog listing</td></tr>
+<tr><td>Integrated Coaching</td><td>BBA Degree + UPSC coaching; B.Com Degree + CA coaching</td></tr>
+<tr><td>Current Affairs Quiz</td><td>Quiz page (same title and heading as the UPSC current affairs page)</td></tr>
+<tr><td>Gallery</td><td>Gallery, Eminent Visitors, College Visits, Press Release</td></tr>
+<tr><td>Online Courses</td><td>No destination (link is "#")</td></tr>
+<tr><td>Apply Now</td><td>Student Application (stand-alone form page), Scholarship Form (stand-alone form page)</td></tr>
+</tbody></table></div>
+<h3>Homepage section order today</h3>
+<p>Top contact bar and five test-series buttons → menu → admission popup → banner slider (4 images) → enquiry form (name, phone, course, reCAPTCHA) → long introductory text in grey boxes → "Vetri Paathai" event banner → gallery and course highlights lists → "Join our course" (UPSC, TNPSC) → "Our achievements" (two image cards) → three YouTube student reviews → footer.</p>
+<h3>What works well and should be kept</h3>
+<ul class="tight">
+  <li>Click-to-call and WhatsApp buttons on every page, with a pre-filled WhatsApp message.</li>
+  <li>Address, landmark and opening hours on every page, and a Google Map on the Contact page.</li>
+  <li>A large Tamil and English current-affairs and preparation-guide library (valuable for search and for returning visitors).</li>
+  <li>Integrated degree programmes (BBA + UPSC, B.Com + CA), which set the academy apart.</li>
+  <li>HTTPS, canonical tags, unique page titles and meta descriptions on most pages, Open Graph tags, an XML sitemap, a valid robots.txt, and Google Tag Manager, Analytics and Google Ads tags.</li>
+</ul>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+<h2><span class="n">3</span>Key audit findings</h2>
+<p>Findings are ranked by impact on enquiries and trust. Each finding is labelled:
+<span class="tag c">Confirmed</span> observed or measured during this audit ·
+<span class="tag o">Opportunity</span> a design judgement for discussion ·
+<span class="tag u">Not verified</span> could not be fully tested.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Page</th><th>Problem</th><th>Evidence</th><th>Severity</th><th>Recommendation</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Home (desktop &amp; mobile)</td><td>An admission popup opens on every page load and covers the hero and menu. On mobile it fills the entire screen. <span class="tag c">Confirmed</span></td><td>Fig. A, Fig. E</td><td><span class="sev h">High</span></td><td>Replace with an inline admissions banner in the hero, or a small, dismissible bar that appears after the visitor scrolls and remembers when it was closed.</td></tr>
+<tr><td>2</td><td>Global navigation</td><td>12 top-level items wrap onto two lines at 1440px. Several labels lead to unrelated pages (e.g. "IAS Academy" → <em>Historical Perspective</em>). 12 sub-items point to just two pages, and "Online Courses" goes nowhere. <span class="tag c">Confirmed</span></td><td>Fig. A; link audit in §2</td><td><span class="sev h">High</span></td><td>Reorganise into 6–7 exam-led sections (see §8). Every label must match its destination.</td></tr>
+<tr><td>3</td><td>Home, mobile</td><td>The first mobile screen shows contact text and five test-series buttons. The logo only appears after them, and the hero banner shrinks to a thin strip whose text cannot be read. <span class="tag c">Confirmed</span></td><td>Fig. E, Fig. F</td><td><span class="sev h">High</span></td><td>Use a compact sticky header (logo, call, menu) with a text-based hero sized for mobile, and move the test series into the menu and a homepage section.</td></tr>
+<tr><td>4</td><td>Home</td><td>The hero messages ("Admission open", achievement figures) exist only inside four PNG images totalling ≈3.0 MB. Search engines and screen readers cannot read them, and they are illegible on phones. <span class="tag c">Confirmed</span></td><td>File sizes measured: 1,079 KB, 744 KB, 464 KB, 764 KB</td><td><span class="sev h">High</span></td><td>Use one real headline, a supporting line and two buttons as HTML text over a single optimised photograph (WebP/AVIF, target &lt;200 KB).</td></tr>
+<tr><td>5</td><td>Site-wide forms</td><td>At least five different forms collect different details. The home form has a free-text "Course" box. The popup asks for email and a typed captcha. The contact form has no phone field. The test-series form asks for city. No form has visible labels (placeholders only). Text errors: "Comemnts", "Sent A Message", "Permenent". <span class="tag c">Confirmed</span> Submission and delivery <span class="tag u">Not verified</span>.</td><td>Field audit of each form</td><td><span class="sev h">High</span></td><td>One short enquiry component (name, mobile, programme drop-down, optional preferred callback time) reused everywhere, with visible labels, inline validation and a clear thank-you message with the next step.</td></tr>
+<tr><td>6</td><td>Apply Now → Student Application</td><td>A 40+ field form on a page with no site header, footer or way back. Course options ("TNPSC, Banking, TET") don't match the courses advertised elsewhere, and gender is a binary choice. <span class="tag c">Confirmed</span></td><td>Field audit</td><td><span class="sev m">Medium</span></td><td>Keep the full application as step 2, after an enquiry. Place it inside the site layout and split it into short steps. Course options should come from the programme list.</td></tr>
+<tr><td>7</td><td>Missing pages</td><td>There is no About, Faculty, Results or Courses page. URLs such as /about.php or /results.php show the homepage with a "200 OK" status, and unknown URLs redirect to the homepage. <span class="tag c">Confirmed</span></td><td>HTTP checks</td><td><span class="sev h">High</span></td><td>Create these pages with academy-verified content, and return a proper 404 page for unknown URLs.</td></tr>
+<tr><td>8</td><td>Home, performance</td><td>The homepage loads ≈5.4 MB of images with no lazy loading (0 of 15 images), 43 scripts and 18 stylesheets (84 requests). Bootstrap and jQuery are each loaded twice, and three YouTube players load immediately. <span class="tag c">Confirmed</span> Core Web Vitals scores <span class="tag u">Not verified</span>.</td><td>Browser resource audit; image sizes via direct download</td><td><span class="sev h">High</span></td><td>Compress and resize images, lazy-load anything below the first screen, use lightweight video thumbnails that load the player on tap, and remove duplicate libraries.</td></tr>
+<tr><td>9</td><td>Home, content</td><td>Long, repetitive SEO-style paragraphs ("best IAS academy in Chennai" appears repeatedly) in justified grey boxes. Achievements are images with Tamil text baked in. The page has an empty &lt;h1&gt;. <span class="tag c">Confirmed</span></td><td>Fig. C, Fig. D; heading audit</td><td><span class="sev m">Medium</span></td><td>Rewrite as scannable sections with one clear H1. Present achievements as text cards with photo, name, exam, year and rank, only where the academy can verify them.</td></tr>
+<tr><td>10</td><td>Mobile, all pages</td><td>The floating call and WhatsApp buttons cover body text while reading. <span class="tag c">Confirmed</span> in a 375px emulator.</td><td>Fig. G</td><td><span class="sev m">Medium</span></td><td>Use a slim bottom action bar (Call · WhatsApp · Enquire) with page padding so it never covers content.</td></tr>
+<tr><td>11</td><td>Global, typography</td><td>Open Sans, Roboto Slab and Arial are mixed, with inconsistent heading styles, centred and justified text, and decorative circles and red dots overlapping the form. <span class="tag o">Opportunity</span></td><td>Fig. B, Fig. C</td><td><span class="sev m">Medium</span></td><td>Define one type scale and one bilingual font family (see §7).</td></tr>
+<tr><td>12</td><td>Accessibility</td><td>Form fields have no labels. Image alt text is generic or repeated ("evastaliniasacademy", "tnpsccoachingcentre3"). Mobile has 22 tap targets under 32px tall. <span class="tag c">Confirmed</span> Full colour-contrast and keyboard audit <span class="tag u">Not verified</span>.</td><td>DOM audit</td><td><span class="sev m">Medium</span></td><td>Aim for WCAG 2.1 AA basics: labels, meaningful alt text, 44px tap targets, visible focus states and contrast checks.</td></tr>
+<tr><td>13</td><td>SEO hygiene</td><td>Two WebSite schema blocks with different names ("Eva Stalin IAS Academy" / "IAS ACADEMY"). The quiz page duplicates another page's title and heading. http:// takes two redirects to reach the final URL. <span class="tag c">Confirmed</span></td><td>Source and redirect checks</td><td><span class="sev l">Low</span></td><td>Use a single Organization/EducationalOrganization schema, unique titles for every page, and a single-hop redirect.</td></tr>
+<tr><td>14</td><td>Footer</td><td>The text "For Enquires : Call @, any time" is broken, the copyright still reads 2025, and the bold justified text is hard to read. <span class="tag c">Confirmed</span></td><td>Fig. H</td><td><span class="sev l">Low</span></td><td>Restructure the footer: contact block, hours table, quick links by exam, social links and legal links.</td></tr>
+<tr><td>15</td><td>Mobile menu</td><td>In emulation, the slide-out menu opened as a narrow, clipped panel on one attempt and did not stay open on another. <span class="tag u">Not verified</span> on real devices.</td><td>Emulator only</td><td><span class="sev m">Medium</span></td><td>Test on real Android and iOS devices before the redesign. The new design will specify a full-height accessible menu.</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+<h2><span class="n">4</span>Alignment &amp; responsive design issues</h2>
+<p>Screenshots were captured in a browser at a 1440 × 900 desktop viewport and a 375 × 812 mobile viewport (emulated). Numbered markers point to the issues described below each image.</p>
+
+<figure>
+  <div class="shot">
+    <img src="evidence/01-desktop-hero-popup.jpg" alt="Desktop homepage with admission popup covering the hero and a two-line navigation menu">
+    <span class="pin" style="left:40%;top:8%">1</span>
+    <span class="pin" style="left:68%;top:19%">2</span>
+    <span class="pin" style="left:64%;top:36%">3</span>
+    <span class="pin" style="left:20%;top:45%">4</span>
+  </div>
+  <figcaption><strong>Fig. A: Desktop homepage on arrival (1440px).</strong>
+    <ol><li>The contact bar and test-series pills wrap onto two rows, so the header looks crowded.</li>
+    <li>12 menu items wrap onto a second line, with "Online Courses" and "Apply Now" stranded below.</li>
+    <li>The admission popup covers the hero on every visit.</li>
+    <li>The hero is a collage image with key text cut by the slider. The message depends on the picture.</li></ol></figcaption>
+</figure>
+
+<div class="grid2">
+<figure>
+  <div class="shot">
+    <img src="evidence/02-desktop-enquiry-form.jpg" alt="Homepage enquiry form with grey inputs, no labels and decorative shapes overlapping">
+    <span class="pin" style="left:16%;top:21%">1</span>
+    <span class="pin" style="left:43%;top:39%">2</span>
+    <span class="pin" style="left:12%;top:50%">3</span>
+  </div>
+  <figcaption><strong>Fig. B: Homepage enquiry form.</strong>
+    <ol><li>A decorative red dot overlaps the Name field.</li><li>Placeholder-only fields, and "Course" is free text, not a choice.</li><li>A decorative arc clips the form edge, and the form and photo are not vertically aligned.</li></ol></figcaption>
+</figure>
+<figure>
+  <div class="shot">
+    <img src="evidence/03-desktop-text-blocks.jpg" alt="Long paragraphs in grey boxes followed by an image banner with Tamil text">
+    <span class="pin" style="left:50%;top:25%">1</span>
+    <span class="pin" style="left:50%;top:72%">2</span>
+  </div>
+  <figcaption><strong>Fig. C: Introductory content.</strong>
+    <ol><li>Dense, repetitive paragraphs in a grey box with no visual hierarchy.</li><li>An important event message ("Vetri Paathai", with Hindu Tamil Thisai) exists only as an image.</li></ol></figcaption>
+</figure>
+<figure>
+  <div class="shot">
+    <img src="evidence/04-desktop-courses-achievements.jpg" alt="Join our course section with two cards and an achievements section with text baked into images">
+    <span class="pin" style="left:50%;top:22%">1</span>
+    <span class="pin" style="left:32%;top:70%">2</span>
+  </div>
+  <figcaption><strong>Fig. D: Courses and achievements.</strong>
+    <ol><li>Only two broad course cards (UPSC, TNPSC) with no duration, mode, batch or next step.</li><li>Achievement cards are images with small Tamil text, which is hard to read and can't be indexed.</li></ol></figcaption>
+</figure>
+<figure>
+  <div class="shot">
+    <img src="evidence/05-desktop-footer.jpg" alt="Footer with broken enquiry text and 2025 copyright">
+    <span class="pin" style="left:28%;top:77%">1</span>
+    <span class="pin" style="left:56%;top:93%">2</span>
+  </div>
+  <figcaption><strong>Fig. H: Footer.</strong>
+    <ol><li>"Call @, any time": the phone number is missing from the sentence, and the hours are hard to scan.</li><li>The copyright year is out of date.</li></ol></figcaption>
+</figure>
+</div>
+
+<h3>Mobile (375px emulated)</h3>
+<div class="pair">
+<figure class="mobile-fig">
+  <div class="shot">
+    <img src="evidence/06-mobile-first-screen.jpg" alt="Mobile first screen showing contact text, five test-series buttons and a full-screen popup">
+    <span class="pin" style="left:45%;top:13%">1</span>
+    <span class="pin" style="left:50%;top:52%">2</span>
+    <span class="pin" style="left:26%;top:86%">3</span>
+  </div>
+  <figcaption><strong>Fig. E: Mobile first screen.</strong>
+    <ol><li>Contact text and five large buttons use roughly a quarter of the screen before the logo.</li><li>The popup covers the logo, hero and form.</li><li>Floating buttons overlap the form fields.</li></ol></figcaption>
+</figure>
+<figure class="mobile-fig">
+  <div class="shot">
+    <img src="evidence/07-mobile-after-popup.jpg" alt="Mobile homepage after closing popup with a tiny hero banner">
+    <span class="pin" style="left:88%;top:49%">1</span>
+    <span class="pin" style="left:88%;top:34%">2</span>
+    <span class="pin" style="left:30%;top:91%">3</span>
+  </div>
+  <figcaption><strong>Fig. F: Mobile after closing the popup.</strong>
+    <ol><li>The desktop banner is scaled down to a thin strip, and its text can't be read.</li><li>The logo sits in its own large block below the contact text and five buttons. A compact header would bring the hero and enquiry action into view.</li><li>The floating call and WhatsApp buttons cover the enquiry fields.</li></ol></figcaption>
+</figure>
+<figure class="mobile-fig">
+  <div class="shot">
+    <img src="evidence/08-mobile-floating-buttons.jpg" alt="Mobile body text partially covered by floating call and WhatsApp buttons">
+    <span class="pin" style="left:13%;top:83%">1</span>
+    <span class="pin" style="left:87%;top:83%">1</span>
+  </div>
+  <figcaption><strong>Fig. G: Mobile reading.</strong>
+    <ol><li>The call and WhatsApp buttons sit over paragraph text while reading.</li></ol></figcaption>
+</figure>
+</div>
+<div class="note"><strong>Tablet:</strong> no separate tablet viewport was captured in this audit. Tablet layouts (768–1024px) will be designed and tested as part of the redesign (see §9).</div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+<h2><span class="n">5</span>Current UX &amp; conversion opportunities</h2>
+<p>A typical visitor is a UPSC or TNPSC aspirant (or a parent), often on a phone, often arriving from Google or an ad. The site needs to answer four questions quickly: <em>Is this academy credible? Do they have a programme for my exam? What are the batch, mode and next steps? How do I talk to them?</em></p>
+<div class="table-wrap"><table>
+<thead><tr><th style="width:24%">Visitor question</th><th>What happens today</th><th>Opportunity</th></tr></thead>
+<tbody>
+<tr><td>"Is this academy credible?"</td><td>Achievement claims sit inside banner images. There are no faculty or results pages, only three video reviews.</td><td>A dedicated Results page and a Faculty page, plus a homepage proof strip, all using academy-verified names, photos, exams and years.</td></tr>
+<tr><td>"Do they have a course for my exam?"</td><td>Two generic course cards. Programme details are spread across information pages (upsc.php, tnpsc.php, coaching.php).</td><td>An exam-led course finder (UPSC · TNPSC Group 1 · Group 2/2A · Group 4 · Integrated degree · Test series) linking to one page per programme.</td></tr>
+<tr><td>"What are the batches, mode and fees?"</td><td>Not visible on the pages reviewed.</td><td>A standard "key facts" panel on each programme page: duration, mode, medium, next batch, and fees or a "request fee details" option. <em>Content to be supplied by the academy.</em></td></tr>
+<tr><td>"How do I talk to them?"</td><td>Call and WhatsApp are always visible (good), but there are five or more forms with different fields, and the popup interrupts.</td><td>One enquiry form, a bottom action bar on mobile, a programme-specific WhatsApp message, and a clear confirmation screen.</td></tr>
+<tr><td>Returning learners (current affairs)</td><td>Large library, but split by daily/monthly, Tamil/English and UPSC/TNPSC across separate menus.</td><td>One "Free Resources" hub with filters (exam, language, date), plus a soft enquiry or test-series prompt on each article.</td></tr>
+</tbody></table></div>
+<p><strong>Tracking:</strong> GTM, Google Analytics and a Google Ads conversion tag are present and must be preserved. Whether form submissions are currently tracked as conversions could not be verified without access to the tag manager. <span class="tag u">Not verified</span></p>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+<h2><span class="n">6</span>Competitor &amp; design references</h2>
+<p>These references are for patterns only. Nothing will be copied, and statistics quoted by these sites belong to them.</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="width:24%">Reference</th><th>What it demonstrates</th><th>Pattern to adapt</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.shankariasacademy.com/">Shankar IAS Academy</a><br><span class="muted">Chennai · UPSC/TNPSC</span></td><td>Separate UPSC, TNPSC and Banking course columns, each with a "Know More" link; "Our Achievers" cards showing photo, rank and year; separate desktop and mobile hero banners; floating WhatsApp help.</td><td>Exam-led course columns; achiever cards as text, not images; banners designed separately for mobile.</td></tr>
+<tr><td><a href="https://officersiasacademy.com/">Officers IAS Academy</a><br><span class="muted">Chennai · UPSC</span></td><td>Named faculty with service background; a step-by-step preparation journey (foundation → testing → mentoring → mains → interview); an upcoming programmes table.</td><td>"Your preparation journey" section; an upcoming batches table; faculty profiles with credentials.</td></tr>
+<tr><td><a href="https://vajiramandravi.com/">Vajiram &amp; Ravi</a><br><span class="muted">Delhi/Chennai · UPSC</span></td><td>Course cards with filter tabs (All, GS, Optional, Test Series); a free counselling form with programme and preferred-time drop-downs.</td><td>Filterable course grid; a short counselling form with a callback-time choice.</td></tr>
+<tr><td><a href="https://www.drishtiias.com/">Drishti IAS</a><br><span class="muted">Delhi · UPSC, bilingual</span></td><td>Large current-affairs library in mega-menus, plus fully parallel English and Hindi sites; enquiry asks for language preference.</td><td>A free-resources hub organised by exam and language; a Tamil/English preference in the enquiry form.</td></tr>
+<tr><td><a href="https://www.visionias.in/">Vision IAS</a><br><span class="muted">UPSC · test series</span></td><td>Test series organised by exam year, paper and medium, each with a start date and schedule link.</td><td>Test-series pages with a clear schedule and a "download schedule" action (replacing today's header pills).</td></tr>
+<tr><td><a href="https://study.iitm.ac.in/ds/">IIT Madras BS programme</a><br><span class="muted">Reputable education site</span></td><td>Clean programme landing page: hero with application deadline and a single Apply button, headline facts, highlights, then links to eligibility, fees and FAQs.</td><td>Programme page template: hero, key facts, who it's for, curriculum, FAQ, enquire.</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+<h2><span class="n">7</span>Proposed redesign vision</h2>
+<p class="lead">"Credible, clear and close to home": a calm, professional academic look that keeps the academy's maroon-and-gold identity, puts verified proof first, and makes the next step obvious on any phone.</p>
+
+<h3>Brand presentation</h3>
+<ul class="tight">
+<li>Keep the existing Eva Stalin logo and its gold mark. Request a vector (SVG) version from the academy so it stays sharp at every size.</li>
+<li>Use real photography of the West Tambaram campus, classrooms, library and events (much of this already exists in the gallery) instead of collages.</li>
+<li>Present Tamil and English with equal care. Tamil headlines should be live text, not images.</li>
+</ul>
+
+<h3>Colour palette (proposal)</h3>
+<p>Built from the colours already on the site, with a calmer neutral base. Final values will be checked for AA contrast.</p>
+<div class="swatches">
+  <div class="sw"><div style="background:#7a1420"></div><p><b>Academy Maroon</b><br>#7A1420 · primary buttons, headings</p></div>
+  <div class="sw"><div style="background:#c8961e"></div><p><b>Laurel Gold</b><br>#C8961E · accents, highlights</p></div>
+  <div class="sw"><div style="background:#1d2330"></div><p><b>Ink</b><br>#1D2330 · body text</p></div>
+  <div class="sw"><div style="background:#fbfaf7"></div><p><b>Paper</b><br>#FBFAF7 · page background</p></div>
+  <div class="sw"><div style="background:#25d366"></div><p><b>WhatsApp Green</b><br>WhatsApp actions only</p></div>
+</div>
+
+<h3>Typography (proposal)</h3>
+<ul class="tight">
+<li><strong>Noto Serif / Noto Serif Tamil</strong> for headings: academic, authoritative, and matched in Tamil and English.</li>
+<li><strong>Noto Sans / Noto Sans Tamil</strong> for body text and interface: highly legible on low-end phones, with consistent Tamil rendering.</li>
+<li>One type scale (for example 16px body, 20/24/32/40px headings), left-aligned text, and no justified paragraphs.</li>
+</ul>
+
+<h3>Navigation &amp; information architecture</h3>
+<p>Reduce 12 top-level items to about 7: <strong>Courses · Test Series · Results · Faculty · Free Resources · About · Contact</strong>, with a persistent <strong>Enquire Now</strong> button. "Courses" opens a panel grouped by exam. On mobile: a sticky header (logo, call, menu) and a bottom action bar (Call · WhatsApp · Enquire).</p>
+
+<h3>Homepage section sequence</h3>
+<ol class="seq">
+<li><strong>Hero:</strong> a text headline such as "UPSC &amp; TNPSC coaching in West Tambaram, Chennai" (final wording to be agreed), a one-line value statement, an <em>Enquire Now</em> button and a <em>View Courses</em> button, and the current admissions notice as a small badge.</li>
+<li><strong>Course finder:</strong> cards for UPSC CSE, TNPSC Group 1, Group 2/2A, Group 4, the integrated BBA/B.Com programmes, and Test Series.</li>
+<li><strong>Proof strip:</strong> verified results figures and named achievers, linking to the Results page. <span class="pend">Pending client data</span></li>
+<li><strong>Why Eva Stalin:</strong> 4–6 benefits drawn from existing content (mentoring, study materials, library and study hall, daily newspaper session, regular tests with post-test analysis).</li>
+<li><strong>Preparation journey:</strong> Foundation → Prelims → Mains → Interview, with the matching programme at each step.</li>
+<li><strong>Faculty highlights.</strong> <span class="pend">Pending client data</span></li>
+<li><strong>Student video reviews:</strong> the existing YouTube reviews as lightweight thumbnails.</li>
+<li><strong>Free resources:</strong> latest current affairs in Tamil and English, the quiz, and exam guides.</li>
+<li><strong>Events &amp; media:</strong> Vetri Paathai, eminent visitors, college visits, press.</li>
+<li><strong>Visit us:</strong> map, landmark, hours, call, WhatsApp, and a short enquiry form.</li>
+</ol>
+
+<h3>Course &amp; programme pages</h3>
+<p>One reusable template: hero with exam name and Enquire button → key facts (duration, mode, medium, next batch, fees or "request fees") → who it's for and eligibility → what's included → syllabus/curriculum overview (reuse the existing syllabus content) → schedule and tests → faculty → results for this exam → FAQs → enquiry form with the programme pre-selected.</p>
+
+<h3>Faculty, results &amp; testimonials</h3>
+<p>These sections will only show information the academy supplies and can verify: name, photo with consent, exam, year, rank or post, and a short quote. Claims currently shown in banner images (achievement counts and "top ranking" statements) need source details before they are reused.</p>
+
+<h3>Enquiry &amp; conversion paths</h3>
+<ul class="tight">
+<li><strong>Primary:</strong> short enquiry (name, mobile, programme, preferred language/callback time) → confirmation page with what happens next, plus a WhatsApp option.</li>
+<li><strong>Secondary:</strong> test-series schedule download, scholarship registration and full application, all inside the site layout.</li>
+<li><strong>Always available:</strong> click-to-call and WhatsApp, with the message pre-filled to the page the visitor is viewing.</li>
+<li>Form submissions are tracked as conversions in the existing GTM/Ads setup (implementation phase).</li>
+</ul>
+
+<h3>Accessibility &amp; performance targets</h3>
+<ul class="tight">
+<li>WCAG 2.1 AA basics: labelled fields, meaningful alt text, 4.5:1 text contrast, 44px tap targets, keyboard and focus support, a correct heading order with one H1 per page.</li>
+<li>Homepage image weight from about 5.4 MB down to a target of under 1 MB, using WebP/AVIF, responsive sizes and lazy loading.</li>
+<li>Remove duplicate libraries and replace the slider plugin. Load YouTube on tap.</li>
+<li>Measure Lighthouse and Core Web Vitals before and after on mobile. Targets will be agreed once a baseline has been captured (see §11).</li>
+</ul>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+<h2><span class="n">8</span>Recommended sitemap &amp; page structure</h2>
+<div class="sitemap">
+<ul>
+<li><strong>Home</strong></li>
+<li><strong>Courses</strong> (hub)
+  <ul>
+  <li>UPSC Civil Services (IAS/IPS/IFS): Foundation · Prelims · Mains · Interview / Mock Interviews</li>
+  <li>TNPSC Group 1 · Group 2 &amp; 2A · Group 4 <span class="pend">VAO, Banking, TET: confirm with client</span></li>
+  <li>Integrated: BBA + UPSC · B.Com + CA</li>
+  <li>Online Courses <span class="pend">confirm whether offered</span></li>
+  </ul></li>
+<li><strong>Test Series</strong> (hub): CSP 2026 · TNPSC Group 1 · Group 2 · Group 2 Tamil · Group 4</li>
+<li><strong>Results &amp; Achievements</strong> <span class="new">NEW</span> <span class="pend">client data</span></li>
+<li><strong>Faculty</strong> <span class="new">NEW</span> <span class="pend">client data</span></li>
+<li><strong>Free Resources</strong> (hub)
+  <ul>
+  <li>Current Affairs: UPSC daily/monthly · TNPSC Tamil/English/monthly</li>
+  <li>Current Affairs Quiz · Exam Guides (About UPSC, About TNPSC, syllabus, "How to crack" guides) · Preparation Tips (newspaper, maps, interview) · Blog</li>
+  </ul></li>
+<li><strong>About</strong> <span class="new">NEW</span>: Our story · Campus &amp; facilities · Events (Gallery, Eminent Visitors, College Visits, Press)</li>
+<li><strong>Admissions</strong>: How to join · Scholarship · Application form</li>
+<li><strong>Contact</strong> · Privacy Policy · Terms · 404 page <span class="new">NEW</span></li>
+</ul>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Page</th><th>Purpose</th><th>Key sections</th><th>Primary CTA</th></tr></thead>
+<tbody>
+<tr><td>Home</td><td>Orient, build trust, route to a programme</td><td>See §7 sequence</td><td>Enquire Now / View Courses</td></tr>
+<tr><td>Courses hub</td><td>Help visitors choose by exam</td><td>Filterable cards, comparison of key facts</td><td>View programme</td></tr>
+<tr><td>Programme page (×8–10)</td><td>Answer everything about one programme</td><td>Key facts, eligibility, curriculum, schedule, faculty, results, FAQ</td><td>Enquire (programme pre-selected)</td></tr>
+<tr><td>Test Series hub/page</td><td>Sell and schedule the test series</td><td>Schedule, format, how to join</td><td>Download schedule / Register</td></tr>
+<tr><td>Results</td><td>Proof of outcomes</td><td>Filter by exam and year, achiever cards, video reviews</td><td>Talk to a counsellor</td></tr>
+<tr><td>Faculty</td><td>Trust in teaching quality</td><td>Profiles, subjects, experience</td><td>Enquire</td></tr>
+<tr><td>Free Resources</td><td>Search traffic and repeat visits</td><td>Filters (exam, language, date), latest items, quiz</td><td>Join test series / Enquire (soft)</td></tr>
+<tr><td>About</td><td>The academy story and campus</td><td>Story, facilities (library, study hall, newspapers), events, press</td><td>Visit campus</td></tr>
+<tr><td>Admissions</td><td>Explain how to join</td><td>Steps, documents, scholarship, application</td><td>Start application</td></tr>
+<tr><td>Contact</td><td>Reach or visit</td><td>Map, landmark, hours, phones, emails, form</td><td>Call / WhatsApp</td></tr>
+</tbody></table></div>
+
+<h3>Existing content: retain, reorganise, improve, review</h3>
+<div class="table-wrap"><table>
+<thead><tr><th style="width:18%">Action</th><th>Content</th></tr></thead>
+<tbody>
+<tr><td><strong>Retain</strong></td><td>Current-affairs and blog articles (keep their URLs where possible); contact details, landmark and hours; YouTube reviews; map; privacy and terms pages; tracking tags.</td></tr>
+<tr><td><strong>Reorganise</strong></td><td>UPSC/TNPSC information pages → Exam Guides; "How to crack" guides → Exam Guides; Gallery, Eminent, College, Press → About › Events; test series header pills → Test Series hub.</td></tr>
+<tr><td><strong>Improve</strong></td><td>Homepage copy (shorter, scannable); course highlights lists → programme pages; achievement images → text cards; enquiry and application forms; footer; alt text and headings.</td></tr>
+<tr><td><strong>Review with client</strong></td><td>Achievement figures and "top ranking" claims in banners; "Historical Perspective", "Event List" and "Event Detail" pages (currently under misleading labels); Online Courses; Banking/TET options in forms; popup campaign usage; residential programme mentioned on the TNPSC coaching page.</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+<h2><span class="n">9</span>Proposed scope of work</h2>
+<p>This is a preliminary scope. Timelines and pricing are outside this document and will be shared separately once the scope is agreed.</p>
+<div class="grid2">
+<div>
+<h3>A. Confirmed needs (from this audit)</h3>
+<ul class="tight">
+<li>UI/UX redesign of the homepage and all key templates.</li>
+<li>Responsive layouts for desktop, tablet and mobile.</li>
+<li>Restructured navigation with labels that match their pages.</li>
+<li>A single enquiry form component, used everywhere.</li>
+<li>Preserving click-to-call, WhatsApp, map, GTM/GA/Ads tags, sitemap and existing article URLs.</li>
+<li>Basic accessibility, SEO hygiene (H1s, alt text, schema, 404) and image performance fixes.</li>
+<li>QA and responsive testing during implementation.</li>
+</ul>
+</div>
+<div>
+<h3>B. Recommendations requiring client approval</h3>
+<ul class="tight">
+<li>New Results, Faculty, About and Courses hub pages (dependent on client content).</li>
+<li>Replacing the auto-popup with an inline admissions banner.</li>
+<li>A Free Resources hub with filters.</li>
+<li>Splitting the student application into steps.</li>
+<li>Updated colour palette and font family.</li>
+<li>Whether to rebuild on the current PHP codebase or move to a CMS (decision for the implementation phase).</li>
+<li>Copywriting and new photography support.</li>
+</ul>
+</div>
+</div>
+<h3>Design system &amp; components</h3>
+<p>Colour and type tokens; buttons; header and mega-menu; mobile header and bottom action bar; course card; programme key-facts panel; achiever card; faculty card; testimonial/video card; article card and filters; enquiry form with all states (empty, error, success); footer; 404 page.</p>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+<h2><span class="n">10</span>Deliverables &amp; acceptance criteria</h2>
+<div class="table-wrap"><table>
+<thead><tr><th style="width:30%">Deliverable</th><th>Acceptance criteria</th></tr></thead>
+<tbody>
+<tr><td>Approved sitemap &amp; content inventory</td><td>Every existing page is mapped to retain, reorganise, improve or retire, and signed off by the academy.</td></tr>
+<tr><td>Low-fidelity wireframes (home, course hub, programme, results, contact)</td><td>Section order and CTAs approved before visual design starts.</td></tr>
+<tr><td>Visual design system</td><td>Colours pass WCAG AA contrast; Tamil and English type samples are approved; all components are documented with their states.</td></tr>
+<tr><td>High-fidelity page designs: desktop (1440), tablet (768) and mobile (375)</td><td>Each agreed template is designed at all three widths; no horizontal scroll; tap targets ≥44px; the enquiry action is visible within the first mobile screen.</td></tr>
+<tr><td>Clickable prototype</td><td>Covers visitor journeys: home → course → enquiry → confirmation; home → test series → schedule download.</td></tr>
+<tr><td>Implementation handover notes</td><td>Lists integrations to keep (GTM, GA, Ads, reCAPTCHA or replacement, form email routing, WhatsApp, map, sitemap) and redirect needs.</td></tr>
+<tr><td>QA checklist (implementation phase)</td><td>Tested on current Chrome, Safari, Firefox and Edge, plus real Android and iOS phones; forms deliver to the academy's inbox; conversions fire; Lighthouse is measured before and after.</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+<h2><span class="n">11</span>Assumptions, dependencies &amp; client questions</h2>
+<h3>Audit limitations</h3>
+<ul class="tight">
+<li>Audited in one browser on 24 Oct 2026 using a 1440px desktop viewport and a 375px emulated phone. <strong>Not tested:</strong> real phones, tablets, iOS Safari or other browsers.</li>
+<li><strong>No forms were submitted</strong>, so email delivery, auto-replies and conversion tracking were not verified.</li>
+<li>Google PageSpeed/Lighthouse scores could not be retrieved (API quota). Performance findings come from measured file sizes and request counts, not lab scores.</li>
+<li>Pages were reviewed through the menu, footer and direct URL checks. Not all 483 sitemap URLs were reviewed individually.</li>
+<li>No access to hosting, the CMS/codebase, Google Analytics, Search Console or Tag Manager.</li>
+<li>Claims shown on the site (achievement counts, rankings) were not independently verified and are not repeated as fact in this proposal.</li>
+</ul>
+<h3>Dependencies</h3>
+<ul class="tight">
+<li>Verified results data, faculty profiles, photos and consent from the academy.</li>
+<li>Programme details: duration, mode, medium, batch dates and fee policy.</li>
+<li>Logo source files (vector) and any brand guidelines.</li>
+<li>Read access to Analytics, Search Console and Tag Manager for a baseline.</li>
+<li>Hosting and codebase access for the implementation phase.</li>
+</ul>
+<h3>Questions for the academy</h3>
+<ol class="tight">
+<li>Which programmes are currently offered? (UPSC stages, TNPSC groups, VAO, Banking, TET, integrated degrees, online courses?)</li>
+<li>Can you share verified results (name, exam, year, rank/post) and permission to publish them?</li>
+<li>What is the source for the banner figures and the "top ranking institution" statement?</li>
+<li>Who are the faculty members we can feature?</li>
+<li>Should fees be shown publicly, or handled through "request fee details"?</li>
+<li>Where should enquiries go (email, CRM, WhatsApp Business), and who follows up?</li>
+<li>How important is the admission popup to current campaigns? Would an inline banner be acceptable?</li>
+<li>Should the site be fully bilingual (Tamil and English), or English with Tamil content sections?</li>
+<li>Is there a residential programme (mentioned on the TNPSC coaching page)?</li>
+<li>Are there other locations or online batches to include?</li>
+</ol>
+</section>
+
+<!-- 12 -->
+<section id="s12">
+<h2><span class="n">12</span>Recommended next steps &amp; approval process</h2>
+<ol class="seq">
+<li><strong>Review meeting:</strong> walk through this report and agree on priorities and the scope items in §9B.</li>
+<li><strong>Content &amp; access collection:</strong> the academy supplies the answers in §11 plus results, faculty and programme data, and grants analytics access for a baseline.</li>
+<li><strong>Sitemap &amp; wireframe approval:</strong> sign-off on structure before visual design begins.</li>
+<li><strong>Visual design approval:</strong> design system and key pages at desktop, tablet and mobile, with one consolidated round of feedback per stage.</li>
+<li><strong>Implementation proposal:</strong> a separate document covering build approach, timeline and commercials.</li>
+</ol>
+<div class="callout">Every recommendation above is for discussion. Nothing will be changed on the live website until the academy approves the scope and designs in writing.</div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">Prepared for Eva Stalin IAS Academy management · Audit date 24 October 2026 · Evidence screenshots captured from the public website on that date.</div>
+</footer>
+</body>
+</html>
+
+</body></html>
